@@ -15,9 +15,10 @@ samtools flagstat ACBarrie.bam > ACBarrie_flagstat.txt
 cat ACBarrie_flagstat.txt
 # move the file to the output folder
 mv ACBarrie_flagstat.txt /home/luisacriollo17/output/ACBarrie_flagstat.txt
+#sort file
+samtools sort ACBarrie.bam -o ACBarrie_sorted.bam 
 #run qualimap
-qualimap bamqc -bam /home/luisacriollo17/ACBarrie.bam -outdir /home/luisacriollo17/output
-
+qualimap bamqc -bam /home/luisacriollo17/ACBarrie_sorted.bam -outdir /home/luisacriollo17/output
 
 
 
