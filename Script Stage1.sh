@@ -1,19 +1,23 @@
 #install packages
 conda install -c bioconda fastqc
 conda install -c bioconda samtools
-conda install -c bioconda star
-conda install -c bioconda htseq
+conda install -c bioconda qualimap
 #download datasets
-wget https://github.com/josoga2/yt-dataset/blob/main/dataset/ACBarrie_R2_rep.fastq.gz?raw=true https://github.com/josoga2/yt-dataset/blob/main/dataset/alignment_map/ACBarrie.bam?raw=true
-https://github.com/josoga2/yt-dataset/blob/384a2d0d72c395f5235025fa75b92308e5d73c7d/dataset/references/reference.fasta?raw=true -O reference.fastq.gz
+wget https://github.com/josoga2/yt-dataset/blob/main/dataset/ACBarrie_R2_rep.fastq.gz?raw=true -O ACBarrie_R2_rep.fastq.gz
+wget https://github.com/josoga2/yt-dataset/blob/main/dataset/alignment_map/ACBarrie.bam?raw=true -O ACBarrie.bam
 #run fastqc
 fastqc -o output ACBarrie_R1.fastq.gz
+#unzip bam.gz file
+gzip -d ACBarrie.bam.gz
 #run samtools
 samtools flagstat ACBarrie.bam > ACBarrie_flagstat.txt
 #view the content of the file
 cat ACBarrie_flagstat.txt
 # move the file to the output folder
 mv ACBarrie_flagstat.txt /home/luisacriollo17/output/ACBarrie_flagstat.txt
+#run qualimap
+qualimap bamqc -bam /home/luisacriollo17/ACBarrie.bam -outdir /home/luisacriollo17/output
+
 
 
 
