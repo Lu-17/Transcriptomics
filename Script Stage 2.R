@@ -71,4 +71,4 @@ legend(0.8,0.5, as.vector(unique(irisdata$species)),fill=c(1,2,3))
 #correlation function
 corr <- cor(irisdata[,1:4])
 round(corr,3)
-print('Petal lenth and sepal petal width correlate best')
+print('Petal lenth and petal width correlate best')
